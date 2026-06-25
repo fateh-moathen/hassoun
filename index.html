@@ -1,354 +1,686 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>شركة رحال - لصيانة أجهزة التكييف والكهرباء</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/fonts/cairo@latest/arabic-400-normal.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/fonts/cairo@latest/arabic-700-normal.css">
-<style>
-  :root{
-    --orange:#f36e42;
-    --navy:#083050;
-    --teal:#61c4ae;
-    --white:#ffffff;
-  }
-  *{box-sizing:border-box;margin:0;padding:0;font-family:'Cairo',sans-serif}
-  body{background:#f4f7f9;color:var(--navy);min-height:100vh}
-  
-  /* Header */
-  header{
-    background:linear-gradient(135deg,var(--navy) 0%,#0a3d63 100%);
-    padding:20px;
-    box-shadow:0 4px 20px rgba(0,0,0,0.15);
-    position:sticky;top:0;z-index:100;
-  }
-  .header-inner{
-    max-width:1100px;margin:0 auto;
-    display:flex;align-items:center;gap:20px;
-    flex-wrap:wrap;justify-content:center;
-  }
-  .logo-wrap{
-    width:90px;height:90px;border-radius:50%;
-    background:var(--white);padding:6px;
-    box-shadow:0 4px 15px rgba(243,110,66,0.4);
-    display:flex;align-items:center;justify-content:center;
-    overflow:hidden;
-  }
-  .logo-wrap img{width:100%;height:100%;object-fit:contain;border-radius:50%}
-  .brand{color:var(--white);text-align:center}
-  .brand h1{font-size:1.8rem;font-weight:700;margin-bottom:4px}
-  .brand p{font-size:0.95rem;color:var(--teal);font-weight:400}
-  
-  /* Hero */
-  .hero{
-    background:linear-gradient(135deg,var(--teal) 0%,#4fb8a0 100%);
-    color:var(--white);
-    padding:40px 20px;text-align:center;
-    position:relative;overflow:hidden;
-  }
-  .hero::before{
-    content:'';position:absolute;top:-50px;left:-50px;
-    width:200px;height:200px;border-radius:50%;
-    background:rgba(255,255,255,0.08);
-  }
-  .hero::after{
-    content:'';position:absolute;bottom:-80px;right:-80px;
-    width:250px;height:250px;border-radius:50%;
-    background:rgba(255,255,255,0.08);
-  }
-  .hero h2{font-size:1.6rem;margin-bottom:10px;position:relative;z-index:1}
-  .hero p{font-size:1.05rem;opacity:0.95;position:relative;z-index:1}
-  
-  /* Container */
-  .container{max-width:1100px;margin:0 auto;padding:30px 20px}
-  
-  /* Services */
-  .section-title{
-    text-align:center;margin-bottom:30px;
-  }
-  .section-title h3{
-    font-size:1.8rem;color:var(--navy);
-    display:inline-block;position:relative;padding-bottom:10px;
-  }
-  .section-title h3::after{
-    content:'';position:absolute;bottom:0;right:50%;
-    transform:translateX(50%);
-    width:60px;height:4px;background:var(--orange);border-radius:2px;
-  }
-  
-  .services{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-    gap:18px;margin-bottom:40px;
-  }
-  .service-card{
-    background:var(--white);
-    border-radius:14px;
-    padding:22px;
-    box-shadow:0 4px 15px rgba(8,48,80,0.08);
-    border-right:4px solid var(--orange);
-    transition:all 0.3s ease;
-    display:flex;align-items:flex-start;gap:15px;
-  }
-  .service-card:hover{
-    transform:translateY(-5px);
-    box-shadow:0 10px 25px rgba(8,48,80,0.15);
-    border-right-color:var(--teal);
-  }
-  .service-icon{
-    width:50px;height:50px;flex-shrink:0;
-    background:linear-gradient(135deg,var(--orange),#ff8a5c);
-    border-radius:12px;
-    display:flex;align-items:center;justify-content:center;
-    font-size:1.6rem;color:var(--white);
-  }
-  .service-card:nth-child(even) .service-icon{
-    background:linear-gradient(135deg,var(--teal),#4fb8a0);
-  }
-  .service-text h4{font-size:1.05rem;color:var(--navy);margin-bottom:4px}
-  .service-text p{font-size:0.9rem;color:#6b7a8a;line-height:1.6}
-  
-  /* Contact Card */
-  .contact-card{
-    background:var(--white);
-    border-radius:20px;
-    padding:35px 25px;
-    box-shadow:0 8px 30px rgba(8,48,80,0.1);
-    margin-bottom:30px;
-    text-align:center;
-    position:relative;overflow:hidden;
-  }
-  .contact-card::before{
-    content:'';position:absolute;top:0;right:0;left:0;height:6px;
-    background:linear-gradient(90deg,var(--orange),var(--teal));
-  }
-  .contact-avatar{
-    width:100px;height:100px;border-radius:50%;
-    background:linear-gradient(135deg,var(--navy),#0a3d63);
-    color:var(--white);
-    display:flex;align-items:center;justify-content:center;
-    font-size:2.5rem;font-weight:700;
-    margin:0 auto 18px;
-    box-shadow:0 6px 20px rgba(8,48,80,0.25);
-  }
-  .contact-card h3{font-size:1.5rem;color:var(--navy);margin-bottom:6px}
-  .contact-card .role{color:var(--orange);font-size:1rem;margin-bottom:20px;font-weight:700}
-  .contact-card .phone{
-    font-size:1.8rem;font-weight:700;color:var(--navy);
-    direction:ltr;display:inline-block;margin-bottom:25px;
-    letter-spacing:1px;
-  }
-  
-  /* Buttons */
-  .btn-group{
-    display:flex;gap:12px;flex-wrap:wrap;justify-content:center;
-  }
-  .btn{
-    padding:14px 28px;border-radius:50px;
-    font-size:1rem;font-weight:700;
-    border:none;cursor:pointer;
-    display:inline-flex;align-items:center;gap:10px;
-    transition:all 0.3s ease;
-    text-decoration:none;
-    font-family:'Cairo',sans-serif;
-  }
-  .btn-primary{
-    background:linear-gradient(135deg,var(--orange),#ff8a5c);
-    color:var(--white);
-    box-shadow:0 6px 20px rgba(243,110,66,0.4);
-  }
-  .btn-primary:hover{
-    transform:translateY(-3px);
-    box-shadow:0 10px 25px rgba(243,110,66,0.5);
-  }
-  .btn-secondary{
-    background:linear-gradient(135deg,var(--teal),#4fb8a0);
-    color:var(--white);
-    box-shadow:0 6px 20px rgba(97,196,174,0.4);
-  }
-  .btn-secondary:hover{
-    transform:translateY(-3px);
-    box-shadow:0 10px 25px rgba(97,196,174,0.5);
-  }
-  .btn-navy{
-    background:linear-gradient(135deg,var(--navy),#0a3d63);
-    color:var(--white);
-    box-shadow:0 6px 20px rgba(8,48,80,0.3);
-  }
-  .btn-navy:hover{
-    transform:translateY(-3px);
-    box-shadow:0 10px 25px rgba(8,48,80,0.4);
-  }
-  .btn svg{width:20px;height:20px;fill:currentColor}
-  
-  /* Toast */
-  .toast{
-    position:fixed;bottom:30px;left:50%;
-    transform:translateX(-50%) translateY(100px);
-    background:var(--navy);color:var(--white);
-    padding:14px 24px;border-radius:50px;
-    box-shadow:0 8px 25px rgba(0,0,0,0.2);
-    opacity:0;transition:all 0.4s ease;
-    z-index:1000;font-weight:700;
-    display:flex;align-items:center;gap:10px;
-  }
-  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
-  .toast svg{width:22px;height:22px;fill:var(--teal)}
-  
-  /* Footer */
-  footer{
-    background:var(--navy);color:var(--white);
-    text-align:center;padding:25px 20px;
-    font-size:0.9rem;
-  }
-  footer span{color:var(--orange);font-weight:700}
-  
-  @media(max-width:600px){
-    .brand h1{font-size:1.4rem}
-    .hero h2{font-size:1.3rem}
-    .contact-card .phone{font-size:1.5rem}
-    .btn{padding:12px 22px;font-size:0.95rem}
-    .logo-wrap{width:75px;height:75px}
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hassoun Tekstil - لتجارة وصناعة الأقمشة التركية</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/cairo@5.0.0/index.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gold: #D4AF37;
+            --gold-light: #F4E5A3;
+            --gold-dark: #B8960C;
+            --silver: #C0C0C0;
+            --silver-light: #E8E8E8;
+            --silver-dark: #A0A0A0;
+            --dark-bg: #1a1a2e;
+            --darker-bg: #0f0f1a;
+            --card-bg: #16213e;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(135deg, var(--darker-bg) 0%, var(--dark-bg) 50%, #1a1a3e 100%);
+            min-height: 100vh;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Animated background particles */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(ellipse at 20% 50%, rgba(212, 175, 55, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(192, 192, 192, 0.06) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 80%, rgba(212, 175, 55, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 40px 20px 30px;
+            animation: fadeInDown 1s ease;
+        }
+
+        .logo-container {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .logo-container img {
+            width: 280px;
+            max-width: 90%;
+            height: auto;
+            filter: drop-shadow(0 10px 30px rgba(212, 175, 55, 0.4)) 
+                    drop-shadow(0 5px 15px rgba(192, 192, 192, 0.3));
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .logo-container img:hover {
+            transform: scale(1.05);
+            filter: drop-shadow(0 15px 40px rgba(212, 175, 55, 0.6)) 
+                    drop-shadow(0 8px 20px rgba(192, 192, 192, 0.4));
+        }
+
+        .logo-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: pulse 3s ease-in-out infinite;
+            z-index: -1;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+            50% { transform: translate(-50%, -50%) scale(1.3); opacity: 0.8; }
+        }
+
+        .brand-name {
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 50%, var(--gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+
+        .brand-subtitle {
+            font-size: 1.1rem;
+            color: var(--silver-light);
+            font-weight: 400;
+            margin-bottom: 8px;
+        }
+
+        .brand-turkish {
+            font-size: 0.95rem;
+            color: var(--silver);
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* Divider */
+        .divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 30px 0;
+            gap: 15px;
+        }
+
+        .divider-line {
+            height: 1px;
+            width: 80px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+
+        .divider-icon {
+            color: var(--gold);
+            font-size: 1.2rem;
+        }
+
+        /* Bio Section */
+        .bio-section {
+            text-align: center;
+            padding: 20px;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+
+        .bio-text {
+            font-size: 1.15rem;
+            color: var(--silver-light);
+            line-height: 1.8;
+            margin-bottom: 10px;
+        }
+
+        .bio-highlight {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(192, 192, 192, 0.1));
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 30px;
+            padding: 8px 25px;
+            color: var(--gold-light);
+            font-size: 1rem;
+            margin-top: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Social Buttons */
+        .social-section {
+            padding: 20px 0;
+            animation: fadeInUp 1s ease 0.5s both;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 1.3rem;
+            color: var(--gold);
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        .social-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 450px;
+            margin: 0 auto;
+        }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            padding: 16px 25px;
+            border-radius: 16px;
+            text-decoration: none;
+            color: #fff;
+            font-family: 'Cairo', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            overflow: hidden;
+            border: none;
+            cursor: pointer;
+        }
+
+        .social-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .social-btn:hover::before {
+            left: 100%;
+        }
+
+        .social-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .social-btn:active {
+            transform: translateY(-1px);
+        }
+
+        .social-btn i {
+            font-size: 1.4rem;
+            width: 30px;
+            text-align: center;
+        }
+
+        /* Button Colors */
+        .btn-facebook {
+            background: linear-gradient(135deg, #1877F2, #0d5bbf);
+            box-shadow: 0 4px 15px rgba(24, 119, 242, 0.3);
+        }
+        .btn-facebook:hover {
+            box-shadow: 0 8px 25px rgba(24, 119, 242, 0.5);
+        }
+
+        .btn-instagram {
+            background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+            box-shadow: 0 4px 15px rgba(225, 48, 108, 0.3);
+        }
+        .btn-instagram:hover {
+            box-shadow: 0 8px 25px rgba(225, 48, 108, 0.5);
+        }
+
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+        }
+        .btn-whatsapp:hover {
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5);
+        }
+
+        .btn-email {
+            background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+        .btn-email:hover {
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5);
+        }
+
+        .btn-call {
+            background: linear-gradient(135deg, var(--silver-dark), var(--silver));
+            box-shadow: 0 4px 15px rgba(192, 192, 192, 0.3);
+            color: #1a1a2e;
+        }
+        .btn-call:hover {
+            box-shadow: 0 8px 25px rgba(192, 192, 192, 0.5);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 30px 0;
+            animation: fadeInUp 1s ease 0.7s both;
+        }
+
+        .contact-card {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.08), rgba(192, 192, 192, 0.05));
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 20px;
+            padding: 25px;
+            backdrop-filter: blur(10px);
+            margin-bottom: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .contact-item:last-child {
+            border-bottom: none;
+        }
+
+        .contact-item i {
+            color: var(--gold);
+            font-size: 1.2rem;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 10px;
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        .contact-label {
+            font-size: 0.85rem;
+            color: var(--silver);
+            margin-bottom: 2px;
+        }
+
+        .contact-value {
+            font-size: 1rem;
+            color: var(--silver-light);
+            font-weight: 600;
+            direction: ltr;
+            text-align: right;
+        }
+
+        .contact-value a {
+            color: var(--silver-light);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-value a:hover {
+            color: var(--gold);
+        }
+
+        /* Address */
+        .address-card {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.12), rgba(192, 192, 192, 0.08));
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 20px;
+            padding: 25px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .address-card i {
+            font-size: 2rem;
+            color: var(--gold);
+            margin-bottom: 10px;
+        }
+
+        .address-card h3 {
+            color: var(--gold-light);
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .address-card p {
+            color: var(--silver-light);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 20px;
+            border-top: 1px solid rgba(212, 175, 55, 0.15);
+        }
+
+        .footer p {
+            color: var(--silver);
+            font-size: 0.85rem;
+        }
+
+        .footer .footer-brand {
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Floating animation for logo */
+        .logo-container {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .container {
+                padding: 15px;
+            }
+
+            .brand-name {
+                font-size: 1.6rem;
+            }
+
+            .brand-subtitle {
+                font-size: 1rem;
+            }
+
+            .social-btn {
+                padding: 14px 20px;
+                font-size: 0.95rem;
+            }
+
+            .logo-container img {
+                width: 240px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                padding: 30px;
+            }
+
+            .logo-container img {
+                width: 320px;
+            }
+        }
+
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--darker-bg);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--gold-dark);
+            border-radius: 3px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--gold);
+        }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <!-- Header with Logo -->
+        <header class="header">
+            <div class="logo-container">
+                <div class="logo-glow"></div>
+                <img src="logo.png" alt="Hassoun Tekstil Logo">
+            </div>
+            <h1 class="brand-name">Hassoun Tekstil</h1>
+            <p class="brand-subtitle">لتجارة وصناعة الأقمشة التركية</p>
+            <p class="brand-turkish">Döşemelik Kumaş</p>
+        </header>
 
-<header>
-  <div class="header-inner">
-    <div class="logo-wrap">
-      <img src="logo.png" alt="شعار شركة رحال" onerror="this.style.display='none';this.parentElement.innerHTML='<div style=&quot;font-size:2.5rem;color:#f36e42;font-weight:700&quot;>ر</div>'">
+        <!-- Divider -->
+        <div class="divider">
+            <div class="divider-line"></div>
+            <i class="fas fa-gem divider-icon"></i>
+            <div class="divider-line"></div>
+        </div>
+
+        <!-- Bio Section -->
+        <section class="bio-section">
+            <p class="bio-text">
+                نوفر لكم أجود أنواع الأقمشة التركية بأعلى معايير الجودة
+            </p>
+            <span class="bio-highlight">
+                <i class="fas fa-star"></i> Döşemelik Kumaş — أقمشة المفروشات
+            </span>
+        </section>
+
+        <!-- Divider -->
+        <div class="divider">
+            <div class="divider-line"></div>
+            <i class="fas fa-circle divider-icon" style="font-size: 0.6rem;"></i>
+            <div class="divider-line"></div>
+        </div>
+
+        <!-- Social Media Buttons -->
+        <section class="social-section">
+            <h2 class="section-title">تواصل معنا</h2>
+            <div class="social-buttons">
+                <a href="https://www.facebook.com/share/1EWGSKTnYX/?mibextid=wwXIfr" target="_blank" class="social-btn btn-facebook">
+                    <i class="fab fa-facebook-f"></i>
+                    <span>Facebook</span>
+                </a>
+                <a href="https://www.instagram.com/hassoun.tekstil?igsh=eHVuZzE1eTl2Z2Ey&utm_source=qr" target="_blank" class="social-btn btn-instagram">
+                    <i class="fab fa-instagram"></i>
+                    <span>Instagram</span>
+                </a>
+                <a href="https://wa.me/905378720153" target="_blank" class="social-btn btn-whatsapp">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>واتساب — +90 537 872 01 53</span>
+                </a>
+                <a href="mailto:hassoun.tex@hotmail.com" class="social-btn btn-email">
+                    <i class="fas fa-envelope"></i>
+                    <span>hassoun.tex@hotmail.com</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact-section">
+            <h2 class="section-title">أرقام التواصل</h2>
+            <div class="contact-card">
+                <div class="contact-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <div class="contact-info">
+                        <div class="contact-label">اتصال — عبد القادر</div>
+                        <div class="contact-value">
+                            <a href="tel:0980961119">0980961119</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <div class="contact-info">
+                        <div class="contact-label">اتصال — طالب</div>
+                        <div class="contact-value">
+                            <a href="tel:0933327310">0933327310</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-whatsapp"></i>
+                    <div class="contact-info">
+                        <div class="contact-label">واتساب</div>
+                        <div class="contact-value">
+                            <a href="https://wa.me/905378720153" target="_blank">+90 537 872 01 53</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <div class="contact-info">
+                        <div class="contact-label">البريد الإلكتروني</div>
+                        <div class="contact-value">
+                            <a href="mailto:hassoun.tex@hotmail.com">hassoun.tex@hotmail.com</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Address -->
+            <div class="address-card">
+                <i class="fas fa-map-marker-alt"></i>
+                <h3>العنوان</h3>
+                <p>حلب — المدينة الصناعية الفئة الأولى</p>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>© 2026 <span class="footer-brand">Hassoun Tekstil</span> — جميع الحقوق محفوظة</p>
+        </footer>
     </div>
-    <div class="brand">
-      <h1>شركة رحـــال</h1>
-      <p>لصيانة أجهزة التكييف والكهرباء</p>
-    </div>
-  </div>
-</header>
 
-<section class="hero">
-  <h2>🔧 خدمة احترافية بين يديك</h2>
-  <p>خبرة واسعة في صيانة وتركيب جميع أنواع المكيفات والأنظمة الكهربائية</p>
-</section>
+    <script>
+        // Add smooth scroll behavior
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
 
-<div class="container">
+        // Add intersection observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
 
-  <div class="section-title">
-    <h3>خدماتنا</h3>
-  </div>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
 
-  <div class="services">
-    <div class="service-card">
-      <div class="service-icon">❄️</div>
-      <div class="service-text">
-        <h4>تركيب وصيانة المكيفات</h4>
-        <p>تركيب وصيانة جميع أنواع المكيفات بأعلى معايير الجودة</p>
-      </div>
-    </div>
-    <div class="service-card">
-      <div class="service-icon">⚡</div>
-      <div class="service-text">
-        <h4>مكيفات الإنفرتر</h4>
-        <p>تركيب المكيفات الإنفرتر الموفرة للطاقة</p>
-      </div>
-    </div>
-    <div class="service-card">
-      <div class="service-icon">☀️</div>
-      <div class="service-text">
-        <h4>الطاقة الشمسية</h4>
-        <p>تشغيل المكيفات على الطاقة الشمسية</p>
-      </div>
-    </div>
-    <div class="service-card">
-      <div class="service-icon">🌬️</div>
-      <div class="service-text">
-        <h4>تعبئة غاز وفاكيوم</h4>
-        <p>تعبئة غاز وتطبيق الفاكيوم بأحدث الأجهزة</p>
-      </div>
-    </div>
-    <div class="service-card">
-      <div class="service-icon">🛠️</div>
-      <div class="service-text">
-        <h4>كشف وإصلاح الأعطال</h4>
-        <p>تشخيص دقيق وإصلاح احترافي لجميع الأعطال</p>
-      </div>
-    </div>
-    <div class="service-card">
-      <div class="service-icon">🚀</div>
-      <div class="service-text">
-        <h4>خدمة سريعة</h4>
-        <p>خدمة سريعة وأسعار مناسبة تناسب جميع العملاء</p>
-      </div>
-    </div>
-  </div>
+        document.querySelectorAll('.contact-item, .address-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
 
-  <div class="contact-card">
-    <div class="contact-avatar">أ</div>
-    <h3>أستاذ أمين</h3>
-    <div class="role">شركة رحال - للصيانة والتكييف</div>
-    <div class="phone">0941120522</div>
-    <div class="btn-group">
-      <button class="btn btn-primary" onclick="saveContact()">
-        <svg viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21" stroke="#fff" stroke-width="2" fill="none"/><polyline points="7 3 7 8 15 8" stroke="#fff" stroke-width="2" fill="none"/></svg>
-        حفظ جهة الاتصال
-      </button>
-      <a href="tel:+963941120522" class="btn btn-secondary">
-        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        اتصال مباشر
-      </a>
-      <a href="https://wa.me/963941120522" class="btn btn-navy" target="_blank">
-        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
-        واتساب
-      </a>
-    </div>
-  </div>
+        // Stagger animation for contact items
+        document.querySelectorAll('.contact-item').forEach((item, index) => {
+            item.style.transitionDelay = `${index * 0.1}s`;
+        });
 
-</div>
+        // Add ripple effect to buttons
+        document.querySelectorAll('.social-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.cssText = `
+                    position: absolute;
+                    width: ${size}px;
+                    height: ${size}px;
+                    left: ${x}px;
+                    top: ${y}px;
+                    background: rgba(255,255,255,0.3);
+                    border-radius: 50%;
+                    transform: scale(0);
+                    animation: rippleEffect 0.6s ease-out;
+                    pointer-events: none;
+                `;
+                
+                this.appendChild(ripple);
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
 
-<footer>
-  جميع الحقوق محفوظة © 2026 <span>شركة رحال</span> لصيانة أجهزة التكييف والكهرباء
-</footer>
-
-<div class="toast" id="toast">
-  <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01" stroke="#61c4ae" stroke-width="2" fill="none"/></svg>
-  <span id="toastMsg">تم تنزيل ملف جهة الاتصال</span>
-</div>
-
-<script>
-function saveContact(){
-  const vcard = [
-    'BEGIN:VCARD',
-    'VERSION:3.0',
-    'N:رحال;أستاذ أمين;;;',
-    'FN:أستاذ أمين - شركة رحال',
-    'ORG:شركة رحال لصيانة أجهزة التكييف والكهرباء',
-    'TITLE:مسؤول الصيانة',
-    'TEL;TYPE=CELL:+963941120522',
-    'NOTE:تركيب وصيانة جميع انواع المكيفات - تركيب المكيفات الإنفرتر الموفرة للطاقة - تشغيل المكيفات على الطاقة الشمسية - تعبئة غاز - فاكيوم - كشف وإصلاح الأعطال - خدمة سريعة وأسعار مناسبة',
-    'END:VCARD'
-  ].join('\r\n');
-
-  const blob = new Blob([vcard], {type:'text/vcard;charset=utf-8'});
-  const url = URL.createObjectURL(blob);
-  const link = document.createElement('a');
-  link.href = url;
-  link.download = 'شركة_رحال_أمين.vcf';
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-  setTimeout(()=>URL.revokeObjectURL(url), 1000);
-  showToast('✅ سيتم فتح ملف جهة الاتصال - اضغط حفظ لإضافته');
-}
-
-function showToast(msg){
-  const t = document.getElementById('toast');
-  document.getElementById('toastMsg').textContent = msg;
-  t.classList.add('show');
-  setTimeout(()=>t.classList.remove('show'), 3500);
-}
-</script>
-
+        // Add ripple animation keyframes
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes rippleEffect {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
 </body>
 </html>
-```
+
